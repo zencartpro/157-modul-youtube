@@ -1,0 +1,87 @@
+YouTube auf Artikeldetailseite 1.7.0 für Zen Cart 1.5.7 deutsch
+
+Mit dieser Erweiterung können YouTube Videos auf der Artikeldetailseite integriert werden.
+Das Video wird responsiv mit dem "erweiterten Datenschutzmodus" von YouTube eingebunden.
+In der Artikelbearbeitung steht ein neues Feld zur Verfügung, in das einfach der jeweilige YouTube Kurzcode eingetragen wird.
+Es ist also nicht nötig den kompletten Einbettungscode zu verwenden und die Anzeige des Videos ist frei positionierbar.
+
+Hinweis:
+Das vollständige Deaktivieren von "passenden" Videos mit rel=0 ist seitens YouTube nicht mehr möglich.
+Der Code enthält trotzdem noch rel=0, damit werden zumindest am Ende des Videos nur solche desselben Channels vorgeschlagen.
+
+
+Installation und Verwendung:
+
+Dieses Modul ist nur für Zen Cart 1.5.7 deutsch geeignet.
+
+
+Für den Einbau dieses Moduls sollten Sie über folgende Werkzeuge verfügen:
+
+1) Ein guter Texteditor.
+Damit ist nicht das in Windows enthaltene Notepad oder Microsoft Word gemeint.
+Sie benötigen einen Texteditor, der utf-8 versteht und auch im Format utf-8 ohne BOM abspeichern kann.
+Empfehlung: UltraEdit (kostenlose 30 Tage Testversion verfügbar)
+Ebenfalls gut geeignet ist der kostenlose Texteditor Notepad++
+
+2) Ein Tool zum Vergleichen von Dateien
+Bei der Installation dieses Moduls ist es erforderlich, dass Sie den Inhalt einiger Ihrer bestehenden Zen Cart Dateien mit dem Inhalt der neuen Moduldateien vergleichen und die Änderungen zusammenführen ("mergen").
+Empfehlung: BeyondCompare (kostenlose 30 Tage Testversion verfügbar)
+Ebenfalls gut geeignet ist das kostenlose Programm WinMerge
+
+Empfehlung:
+
+Dieses Modul erst in einem Testsystem einbauen und dort konfigurieren/testen und endgültig an die eigenen Wünsche anpassen. 
+Erst dann in einem Liveshop einsetzen! Sichern Sie unbedingt alle Dateien Ihres Shops per FTP und sichern Sie die Datenbank mit phpMyAdmin oder anderen geeigneten Tools!
+WICHTIG
+Vor dem Einbau dieser Änderungen:
+BACKUP von Shop und Datenbank machen!
+Keine Haftung, Verwendung auf eigene Gefahr!
+BACKUP gemacht? Ok, dann weiterlesen...
+
+Die Installation erfolgt in folgenden Schritten. Halten Sie diesen Ablauf ein!
+
+
+1.
+Im Ordner GEAENDERTE DATEIEN alle Ordner namens DEINTEMPLATE auf den Namen des im Shop aktiven Templates umbenennen.
+Den Ordner DEINADMIN auf den Namen Ihres Adminverzeichnisses umbenennen
+Wenn Sie Zen Cart 1.5.7 gerade frisch installiert haben und noch keinerlei Änderungen an den Dateien vorgenommen haben, können Sie nun alle Dateien/Ordner aus dem Ordner GEAENDERTE DATEIEN in der vorgegebenen Struktur in die Zen Cart Installation hochladen. Dabei werden dann etliche Dateien überschrieben.
+Wenn Sie Zen Cart 1.5.7 schon länger im Einsatz haben und schon einmal Änderungen an Dateien vorgenommen oder andere Module eingebaut haben, dann laden Sie die Dateien keinesfalls einfach hoch.
+Vergleichen Sie alle Dateien im Ordner GEAENDERTE DATEIEN mit den entsprechenden Dateien in Ihrem Shop und nehmen Sie die Änderungen manuell per WinMerge oder BeyondCompare vor.
+Dann spielen Sie die geänderten Dateien in der gezeigten Struktur ein.
+
+2.
+Die Datei install.sql im Ordner SQL mit einem Texteditor öffen und den Inhalt kopieren
+
+3.
+Zen Cart Administration öffnen und unter Tools > SQL Patches installieren den Inhalt ins Feld hineinkopieren und absenden.
+
+4.
+Beim Bearbeiten eines Artikels steht nun unten das Feld YouTube Code zur Verfügung.
+Immer nur die kurze ID des Videos verwenden
+Lautet der Link zum Video z.B.
+https://www.youtube.com/watch?v=M7dVF9xylaw
+Dann wäre einzugeben:
+M7dVF9xylaw
+
+5.
+Um das Video nun auf der Artikeldetailseite anzuzeigen, folgenden Abschnitt in Ihre includes/templates/DEINTEMPLATE/templates/tpl_product_info_display.php an die gewünschte Stelle plazieren, z.B. unterhalb des Abschnitts für die Artikelbeschreibung, also z.B. direkt unterhalb von:
+<!--eof Product description -->
+
+<!--bof YouTube -->
+<?php if (!empty($products_youtube)) {
+if ($flag_show_product_info_youtube == 1) {
+?>
+<?php echo '<div id="productYouTube"><iframe src="https://www.youtube-nocookie.com/embed/' . $products_youtube . '?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'; ?>
+<br class="clearBoth">
+<?php
+    } 
+  }
+?>
+<!--eof YouTube -->
+
+
+
+DEINSTALLATION:
+Alle von diesem Modul geänderten Dateien wieder mit den Originaldateien Ihres Backups ersetzen.
+Um alle Datenbankänderungen komplett zu entfernen die Datei uninstall.sql im Ordner SQL mit einem Texteditor öffen und den Inhalt kopieren.
+Zen Cart Administration öffnen und unter Tools > SQL Patches installieren den Inhalt ins Feld hineinkopieren und absenden.
