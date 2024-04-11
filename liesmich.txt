@@ -1,4 +1,4 @@
-YouTube auf Artikeldetailseite 1.8.0 für Zen Cart 1.5.7g deutsch
+YouTube auf Artikeldetailseite 1.8.1 für Zen Cart 1.5.7g deutsch
 
 Mit dieser Erweiterung können YouTube Videos auf der Artikeldetailseite integriert werden.
 Das Video wird responsiv mit dem "erweiterten Datenschutzmodus" von YouTube eingebunden.
@@ -12,9 +12,9 @@ Der Code enthält trotzdem noch rel=0, damit werden zumindest am Ende des Videos
 
 Installation und Verwendung:
 
-Dieses Modul ist nur für Zen Cart 1.5.7g deutsch geeignet.
-Stellen Sie sicher, dass Sie Ihren Shop auf 1.5.7g aktualisiert haben, bevor Sie dieses Modul installieren.
-Die mitgelieferten geänderten Dateien sind auf dem Stand von 1.5.7g!
+Dieses Modul ist nur für Zen Cart 1.5.7h deutsch geeignet.
+Stellen Sie sicher, dass Sie Ihren Shop auf 1.5.7h aktualisiert haben, bevor Sie dieses Modul installieren.
+Die mitgelieferten geänderten Dateien sind auf dem Stand von 1.5.7h!
 
 Für den Einbau dieses Moduls sollten Sie über folgende Werkzeuge verfügen:
 
@@ -55,6 +55,7 @@ Die Datei install.sql im Ordner SQL mit einem Texteditor öffen und den Inhalt k
 
 3.
 Zen Cart Administration öffnen und unter Tools > SQL Patches installieren den Inhalt ins Feld hineinkopieren und absenden.
+Unter PHP 8.2 kann dabei ein völlig harmloses Debug Log erzeugt werden (undefined array key ...). Einfach löschen.
 
 4.
 Beim Bearbeiten eines Artikels steht nun unten das Feld YouTube Code zur Verfügung.
